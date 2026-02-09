@@ -82,7 +82,14 @@ PROVIDERS: tuple[ProviderSpec, ...] = (
         strip_model_prefix=False,
         model_overrides=(),
     ),
-
+    ProviderSpec(
+      name="packycode",                   # config field name
+      keywords=("packycode", ),  # model-name keywords for auto-matching
+      env_key="MYPROVIDER_API_KEY",        # env var for LiteLLM
+      display_name="packycode",          # shown in `nanobot status`
+      litellm_prefix="packy",         # auto-prefix: model → myprovider/model
+      skip_prefixes=("myprovider/") 
+    ),# don't double-prefi
     # AiHubMix: global gateway, OpenAI-compatible interface.
     # strip_model_prefix=True: it doesn't understand "anthropic/claude-3",
     # so we strip to bare "claude-3" then re-prefix as "openai/claude-3".
