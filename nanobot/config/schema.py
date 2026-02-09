@@ -185,3 +185,6 @@ class Config(BaseSettings):
     class Config:
         env_prefix = "NANOBOT_"
         env_nested_delimiter = "__"
+    class ProvidersConfig(BaseModel):
+        ...
+        myprovider: ProviderConfig = ProviderConfig()
